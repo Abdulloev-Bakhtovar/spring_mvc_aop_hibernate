@@ -15,7 +15,6 @@ public class EmployeeDAOImpl implements EmployeeDAO {
     @Autowired
     private SessionFactory sessionFactory;
     @Override
-    @Transactional
     public List<Employee> getAllEmployees() {
         Session session = sessionFactory.getCurrentSession();
         //1 вариант
@@ -30,5 +29,11 @@ public class EmployeeDAOImpl implements EmployeeDAO {
 
         //2 variant
         //return query.getResultList();
+    }
+
+    @Override
+    public void saveEmployee(Employee employee) {
+        Session session = sessionFactory.getCurrentSession();
+        session.persist(employee);
     }
 }
