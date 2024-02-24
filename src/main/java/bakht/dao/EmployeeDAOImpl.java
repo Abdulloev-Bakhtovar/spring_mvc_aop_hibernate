@@ -34,6 +34,17 @@ public class EmployeeDAOImpl implements EmployeeDAO {
     @Override
     public void saveEmployee(Employee employee) {
         Session session = sessionFactory.getCurrentSession();
-        session.persist(employee);
+        //Нельзя использоват save. Он устарел начиная с hibernate 6.0 => persist()
+        //session.persist(employee);
+
+        session.saveOrUpdate(employee);
+    }
+
+    @Override
+    public Employee getEmployee(int id) {
+        Session session = sessionFactory.getCurrentSession();
+        Employee employee = session.get(Employee.class, id);
+
+        return employee;
     }
 }

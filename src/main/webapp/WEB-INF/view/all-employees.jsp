@@ -1,3 +1,4 @@
+<%@ taglib prefix="c" uri="http://www.springframework.org/tags" %>
 
 
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
@@ -15,14 +16,22 @@
         <th>Surname</th>
         <th>Department</th>
         <th>Salary</th>
+        <th>Operations</th>
     </tr>
     </thead>
     <tbody>
+    <c:url var="updateButton" value="/updateInfo">
+        <c:param name="empId" value="${firstEmployee.id}"/>
+    </c:url>
         <tr>
             <td>${firstEmployee.name}</td>
             <td>${firstEmployee.surname}</td>
             <td>${firstEmployee.department}</td>
             <td>${firstEmployee.salary}</td>
+            <td>
+                <input type="button" value="Update"
+                       onclick="window.location.href='${updateButton}'"/>
+            </td>
         </tr>
     </tbody>
 </table>
