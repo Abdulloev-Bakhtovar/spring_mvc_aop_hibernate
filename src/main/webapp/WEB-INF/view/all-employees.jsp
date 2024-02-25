@@ -23,6 +23,9 @@
     <c:url var="updateButton" value="/updateInfo">
         <c:param name="empId" value="${firstEmployee.id}"/>
     </c:url>
+    <c:url var="deleteButton" value="/deleteEmployee">
+        <c:param name="empId" value="${firstEmployee.id}"/>
+    </c:url>
         <tr>
             <td>${firstEmployee.name}</td>
             <td>${firstEmployee.surname}</td>
@@ -31,6 +34,10 @@
             <td>
                 <input type="button" value="Update"
                        onclick="window.location.href='${updateButton}'"/>
+            </td>
+            <td>
+                <input type="button" value="Delete"
+                       onclick="window.location.href='${deleteButton}'"/>
             </td>
         </tr>
     </tbody>
